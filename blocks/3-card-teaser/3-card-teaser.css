@@ -1,53 +1,57 @@
-.cards-container {
+.three-card-teaser {
   overflow: hidden; /* Hide overflowing cards on smaller screens */
 }
 
-.cards-wrapper {
+.three-card-teaser .cards-wrapper {
   display: flex;
   justify-content: center;
   gap: 24px; /* Gap between cards */
   transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+  padding: 24px; /* Add some padding around the cards */
 }
 
 /* Card styles */
-.cards-wrapper > div {
-  flex: 0 0 300px; /* Fixed width for cards on larger screens */
-  max-width: 300px;
+.three-card-teaser .cards-wrapper > div {
+  flex: 0 0 350px; /* Fixed width for cards on larger screens */
+  max-width: 350px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 24px;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack content vertically */
   align-items: center;
   flex-shrink: 0; /* Prevent cards from shrinking on larger screens */
+  margin: 0 12px; /* Add margin for spacing on mobile */
 }
 
 /* Icon styles */
-.cards-wrapper img {
+.three-card-teaser .cards-wrapper img {
   width: 48px;
   height: 48px;
   margin-bottom: 16px;
+  object-fit: contain; /* Ensure icons are scaled correctly */
 }
 
 /* Title styles */
-.cards-wrapper h3 {
+.three-card-teaser .cards-wrapper h3 {
   font-size: 1.125rem; /* 18px */
   margin-bottom: 8px;
   color: #333;
 }
 
 /* Description styles */
-.cards-wrapper p {
+.three-card-teaser .cards-wrapper p {
   font-size: 0.875rem; /* 14px */
   color: #666;
   line-height: 1.5;
+  flex-grow: 1; /* Allow description to take up available space */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .cards-wrapper {
+  .three-card-teaser .cards-wrapper {
     justify-content: flex-start; /* Align cards to the start for horizontal scrolling */
   }
 
@@ -60,7 +64,8 @@
   .cards-dots {
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 
   .cards-dots .dot {
@@ -111,8 +116,9 @@
 
 /* Hide navigation on larger screens */
 @media (min-width: 769px) {
-  .cards-dots,
-  .cards-arrows {
+  .three-card-teaser .cards-dots,
+  .three-card-teaser .cards-arrows,
+  .three-card-teaser .cards-wrapper { /* Hide wrapper on larger screens as content is handled by the default layout */
     display: none;
   }
 }

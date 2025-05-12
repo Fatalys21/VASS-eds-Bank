@@ -1,56 +1,54 @@
 export default function decorate(block) {
-  const cards = Array.from(block.children);
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const cards = Array.from(block.children).map((card) => {
+ card.classList.add('3-card-teaser-card');
+ const iconWrapper = card.children[0];
+ if (iconWrapper) {
+ iconWrapper.classList.add('3-card-teaser-icon');
+    }
+    const title = card.children[1];
+    if (title) {
+ title.classList.add('3-card-teaser-title');
+    }
+    const description = card.children[2];
+    if (description) {
+ description.classList.add('3-card-teaser-description');
+    }
+ return card;
+  });
 
-  if (isMobile) {
+  // Check if it's a mobile view (you can adjust the breakpoint)
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+  if (isMobile()) {
     // Create a carousel container
     const carouselContainer = document.createElement('div');
-    carouselContainer.classList.add('3-card-teaser-carousel');
+ carouselContainer.classList.add('3-card-teaser-carousel');
+
+    // Append cards to the carousel container
+    cards.forEach((card) => carouselContainer.appendChild(card));
 
     // Create navigation dots
     const navDots = document.createElement('div');
-    navDots.classList.add('3-card-teaser-nav-dots');
+ navDots.classList.add('3-card-teaser-nav-dots');
+    cards.forEach((_, index) => {
+      const dot = document.createElement('span');
+ dot.classList.add('3-card-teaser-dot');
+ if (index === 0) {
+ dot.classList.add('active');
+      }
+      dot.addEventListener('click', () => {
+ showCard(index);
+      });
+ navDots.appendChild(dot);
+    });
 
     // Create navigation arrows
     const prevArrow = document.createElement('button');
     prevArrow.classList.add('3-card-teaser-arrow', '3-card-teaser-prev-arrow');
-    prevArrow.innerHTML = '&lt;'; // Left arrow character
+    prevArrow.innerHTML = '<'; // Left arrow character
     const nextArrow = document.createElement('button');
     nextArrow.classList.add('3-card-teaser-arrow', '3-card-teaser-next-arrow');
-    nextArrow.innerHTML = '&gt'; // Right arrow character
-
-    cards.forEach((card, index) => {
-      card.classList.add('3-card-teaser-card');
-      card.style.display = index === 0 ? 'block' : 'none'; // Show only the first card initially
-
-      const iconWrapper = card.children[0];
-      if (iconWrapper) {
-        iconWrapper.classList.add('3-card-teaser-icon');
-      }
-
-      const title = card.children[1];
-      if (title) {
-        title.classList.add('3-card-teaser-title');
-      }
-
-      const description = card.children[2];
-      if (description) {
-        description.classList.add('3-card-teaser-description');
-      }
-
-      carouselContainer.appendChild(card);
-
-      // Create a dot for each card
-      const dot = document.createElement('span');
-      dot.classList.add('3-card-teaser-dot');
-      if (index === 0) {
-        dot.classList.add('active');
-      }
-      dot.addEventListener('click', () => {
-        showCard(index);
-      });
-      navDots.appendChild(dot);
-    });
+    nextArrow.innerHTML = '>'; // Right arrow character
 
     block.innerHTML = ''; // Clear the original content
     block.appendChild(carouselContainer);
@@ -61,13 +59,13 @@ export default function decorate(block) {
     let currentCardIndex = 0;
 
     const showCard = (index) => {
-      cards.forEach((card, i) => {
-        card.style.display = i === index ? 'block' : 'none';
+ cards.forEach((card, i) => {
+ card.style.display = i === index ? 'block' : 'none';
       });
-      navDots.querySelectorAll('.3-card-teaser-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
+ navDots.querySelectorAll('.3-card-teaser-dot').forEach((dot, i) => {
+ dot.classList.toggle('active', i === index);
       });
-      currentCardIndex = index;
+ currentCardIndex = index;
     };
 
     prevArrow.addEventListener('click', () => {
@@ -79,27 +77,5 @@ export default function decorate(block) {
       const newIndex = (currentCardIndex + 1) % cards.length;
       showCard(newIndex);
     });
-
-  } else {
-    cards.forEach((card) => {
-      card.classList.add('3-card-teaser-card');
-
-      const iconWrapper = card.children[0];
-      if (iconWrapper) {
-        iconWrapper.classList.add('3-card-teaser-icon');
-      }
-
-      const title = card.children[1];
-      if (title) {
-        title.classList.add('3-card-teaser-title');
-      }
-
-      const description = card.children[2];
-      if (description) {
-        description.classList.add('3-card-teaser-description');
-      }
-    });
   }
-    }
-  });
 }
