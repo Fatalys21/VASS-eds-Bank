@@ -1,17 +1,17 @@
-.three-card-teaser {
+.teasers {
   overflow: hidden; /* Hide overflowing cards on smaller screens */
 }
 
-.three-card-teaser .cards-wrapper {
+.teasers .cards-wrapper {
   display: flex;
-  justify-content: center;
+ justify-content: center;
   gap: 24px; /* Gap between cards */
   transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
   padding: 24px; /* Add some padding around the cards */
 }
 
 /* Card styles */
-.three-card-teaser .cards-wrapper > div {
+.teasers .cards-wrapper > div {
   flex: 0 0 350px; /* Fixed width for cards on larger screens */
   max-width: 350px;
   background-color: #fff;
@@ -27,7 +27,7 @@
 }
 
 /* Icon styles */
-.three-card-teaser .cards-wrapper img {
+.teasers .cards-wrapper img {
   width: 48px;
   height: 48px;
   margin-bottom: 16px;
@@ -35,14 +35,14 @@
 }
 
 /* Title styles */
-.three-card-teaser .cards-wrapper h3 {
+.teasers .cards-wrapper h3 {
   font-size: 1.125rem; /* 18px */
   margin-bottom: 8px;
   color: #333;
 }
 
 /* Description styles */
-.three-card-teaser .cards-wrapper p {
+.teasers .cards-wrapper p {
   font-size: 0.875rem; /* 14px */
   color: #666;
   line-height: 1.5;
@@ -51,7 +51,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .three-card-teaser .cards-wrapper {
+  .teasers .cards-wrapper {
     justify-content: flex-start; /* Align cards to the start for horizontal scrolling */
   }
 
@@ -116,9 +116,9 @@
 
 /* Hide navigation on larger screens */
 @media (min-width: 769px) {
-  .three-card-teaser .cards-dots,
-  .three-card-teaser .cards-arrows,
-  .three-card-teaser .cards-wrapper { /* Hide wrapper on larger screens as content is handled by the default layout */
+  .teasers .cards-dots,
+  .teasers .cards-arrows,
+  .teasers .cards-wrapper { /* Hide wrapper on larger screens as content is handled by the default layout */
     display: none;
   }
 }
