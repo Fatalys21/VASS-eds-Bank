@@ -10,6 +10,15 @@
  * governing permissions and limitations under the License.
  */
 
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVzcZlkxP3PRvAA_G8KtVDdg.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131-0152, U+015A-017E, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   /* colors */
   --background-color: white;
@@ -21,7 +30,7 @@
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --heading-font-family: 'Titillium Web', sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -38,13 +47,6 @@
 
   /* nav height */
   --nav-height: 64px;
-}
-
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
 }
 
 @font-face {
