@@ -11,13 +11,31 @@
  */
 
 @font-face {
-  font-family: 'Titillium Web';
+ font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; /* Regular */
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVzcZlkxP3PRvAA_G8KtVDdg.woff2') format('woff2');
+  src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_iKf_d9IRhaCSFZiXw.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131-0152, U+015A-017E, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+@font-face {
+ font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_iKf_d9IRhaCSFZmXw.woff2') format('woff2');
+ unicode-range: U+0000-00FF, U+0131-0152, U+015A-017E, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+ font-family: 'Open Sans';
+ font-style: normal;
+  font-weight: 400;
+ font-display: swap;
+ src: url('https://fonts.gstatic.com/s/opensans/v34/memSYYaGs12WeFBjWc4bprZ0PknyvkRmZzJjp-VCmoire_hbPwaWNrw.woff2') format('woff2');
+}
+
 
 :root {
   /* colors */
@@ -25,12 +43,12 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #007bff; /* Primary Blue */
+  --link-hover-color: #0056b3; /* Darker Blue */
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: 'Titillium Web', sans-serif;
+  --body-font-family: 'Open Sans', sans-serif;
+  --heading-font-family: 'Montserrat', sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -47,12 +65,6 @@
 
   /* nav height */
   --nav-height: 64px;
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
 }
 
 @media (width >= 900px) {
@@ -75,8 +87,8 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: #f4f7f6; /* Light background */
+  color: #333; /* Dark grey text */
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
@@ -109,7 +121,7 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
+  font-weight: 700; /* Bold headings */
   line-height: 1.25;
   scroll-margin: 40px;
 }
@@ -139,7 +151,7 @@ pre {
 pre {
   padding: 16px;
   border-radius: 8px;
-  background-color: var(--light-color);
+  background-color: #e9ecef; /* Light grey for code blocks */
   overflow-x: auto;
   white-space: pre;
 }
@@ -157,6 +169,7 @@ button {
 
 /* links */
 a:any-link {
+  transition: color 0.3s ease; /* Smooth color transition */
   color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
@@ -174,9 +187,9 @@ button {
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: none; /* Remove border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 0.75em 1.5em; /* More padding */
   font-family: var(--body-font-family);
   font-style: normal;
   font-weight: 500;
@@ -185,24 +198,27 @@ button {
   text-decoration: none;
   background-color: var(--link-color);
   color: var(--background-color);
+  color: white; /* White text on blue buttons */
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.3s ease; /* Smooth background transition */
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
+  text-decoration: none; /* No underline on hover */
   background-color: var(--link-hover-color);
-  cursor: pointer;
 }
 
 button:disabled,
 button:disabled:hover {
-  background-color: var(--light-color);
-  cursor: unset;
+  background-color: #ced4da; /* Light grey for disabled */
+  cursor: not-allowed; /* Indicate not clickable */
+ color: #6c757d; /* Darker text for disabled */
 }
 
 a.button.secondary,
