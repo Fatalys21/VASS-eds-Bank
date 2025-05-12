@@ -1,124 +1,27 @@
-.teasers {
-  overflow: hidden; /* Hide overflowing cards on smaller screens */
+.teasers > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  gap: 24px;
 }
 
-.teasers .cards-wrapper {
-  display: flex;
- justify-content: center;
-  gap: 24px; /* Gap between cards */
-  transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
-  padding: 24px; /* Add some padding around the cards */
+.teasers > ul > li {
+  border: 1px solid #dadada;
+  background-color: var(--background-color);
 }
 
-/* Card styles */
-.teasers .cards-wrapper > div {
-  flex: 0 0 350px; /* Fixed width for cards on larger screens */
-  max-width: 350px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  align-items: center;
-  flex-shrink: 0; /* Prevent cards from shrinking on larger screens */
-  margin: 0 12px; /* Add margin for spacing on mobile */
+.teasers .teasers-card-body {
+  margin: 16px;
 }
 
-/* Icon styles */
-.teasers .cards-wrapper img {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 16px;
-  object-fit: contain; /* Ensure icons are scaled correctly */
+.teasers .teasers-card-image {
+  line-height: 0;
 }
 
-/* Title styles */
-.teasers .cards-wrapper h3 {
-  font-size: 1.125rem; /* 18px */
-  margin-bottom: 8px;
-  color: #333;
-}
-
-/* Description styles */
-.teasers .cards-wrapper p {
-  font-size: 0.875rem; /* 14px */
-  color: #666;
-  line-height: 1.5;
-  flex-grow: 1; /* Allow description to take up available space */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .teasers .cards-wrapper {
-    justify-content: flex-start; /* Align cards to the start for horizontal scrolling */
-  }
-
-  .cards-wrapper > div {
-    flex: 0 0 80%; /* Cards take up 80% of the viewport width */
-    max-width: 80%;
-  }
-
-  /* Styles for navigation dots */
-  .cards-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-
-  .cards-dots .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-
-  .cards-dots .dot.active {
-    background-color: #333;
-  }
-
-  /* Styles for navigation arrows */
-  .cards-arrows {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    padding: 0 10px;
-  }
-
-  .cards-arrows .arrow {
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #333;
-    z-index: 1;
-  }
-
-  .cards-arrows .arrow:disabled {
-    opacity: 0.5;
-    cursor: default;
-  }
-}
-
-/* Hide navigation on larger screens */
-@media (min-width: 769px) {
-  .teasers .cards-dots,
-  .teasers .cards-arrows,
-  .teasers .cards-wrapper { /* Hide wrapper on larger screens as content is handled by the default layout */
-    display: none;
-  }
+.teasers > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
