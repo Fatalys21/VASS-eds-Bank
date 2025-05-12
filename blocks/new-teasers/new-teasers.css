@@ -1,0 +1,151 @@
+.new-teasers {
+    /* Basic block container styling */
+    padding: 40px 0;
+    background-color: var(--background-color); /* Using a CSS variable for background */
+}
+
+.new-teasers .new-teasers-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px; /* Gap between cards in carousel */
+    padding-bottom: 20px; /* Space for dots if needed */
+    position: relative; /* Needed for arrow positioning */
+}
+
+.new-teasers .new-teasers-desktop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for desktop */
+    gap: 20px;
+    padding: 0 20px; /* Add some padding on desktop */
+    max-width: 1200px; /* Limit width on large screens */
+    margin: 0 auto; /* Center the block */
+}
+
+
+.new-teasers .new-teasers-card {
+    flex: 0 0 80%; /* Cards take 80% of viewport width on mobile */
+    scroll-snap-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for desktop hover */
+}
+
+@media (min-width: 768px) {
+    .new-teasers .new-teasers-card {
+        flex: unset; /* Remove flex properties for desktop grid */
+        scroll-snap-align: unset;
+        width: auto; /* Allow grid to control width */
+    }
+
+    .new-teasers .new-teasers-card:hover {
+        transform: translateY(-5px); /* Subtle hover effect on desktop */
+    }
+}
+
+
+.new-teasers .new-teasers-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.new-teasers .new-teasers-title {
+    font-family: var(--heading-font-family); /* Using heading font variable */
+    font-size: 1.2rem;
+    color: var(--dark-blue); /* Example blue color variable */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.new-teasers .new-teasers-description {
+    font-family: var(--body-font-family); /* Using body font variable */
+    font-size: 1rem;
+    color: var(--text-color); /* Using text color variable */
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow description to take up space */
+}
+
+.new-teasers .new-teasers-link {
+    text-decoration: none;
+    color: inherit; /* Inherit text color from parent */
+    display: block; /* Make the entire card clickable */
+}
+
+/* Mobile Carousel Navigation */
+@media (max-width: 767px) {
+    .new-teasers .new-teasers-desktop {
+        display: none; /* Hide desktop layout on mobile */
+    }
+
+    .new-teasers .new-teasers-nav-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .new-teasers .new-teasers-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc; /* Default dot color */
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .new-teasers .new-teasers-dot.active {
+        background-color: var(--link-color); /* Active dot color */
+    }
+
+    .new-teasers .new-teasers-arrows {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        pointer-events: none; /* Allow clicks to pass through to cards */
+    }
+
+    .new-teasers .new-teasers-arrow {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--dark-blue); /* Example blue color for arrows */
+        z-index: 1;
+        pointer-events: auto; /* Enable clicks on arrows */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .new-teasers .new-teasers-arrow:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+
+@media (min-width: 768px) {
+    .new-teasers .new-teasers-carousel,
+    .new-teasers .new-teasers-nav-dots,
+    .new-teasers .new-teasers-arrows {
+        display: none; /* Hide carousel elements on desktop */
+    }
+}
