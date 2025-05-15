@@ -15,7 +15,7 @@ export default function decorate(block) {
     const imageUrl = imageRow.querySelector('img')?.src;
     const textContent = textRow.textContent.trim();
     const ctaLabel = ctaLabelRow.textContent.trim();
-    const ctaLink = ctaLinkRow.querySelector('a')?.href;
+    const ctaLink = ctaLinkRow.textContent.trim();
 
     // Clear existing content
     block.innerHTML = '';
