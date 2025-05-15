@@ -36,11 +36,23 @@
   margin-top: 20px;
 }
 
-.full-width-banner .button a {
+.full-width-banner .button {
+  margin-top: 20px;
+}
+
+.full-width-banner .button a,
+.full-width-banner .button button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #ffffff; /* Example button background */
-  color: #000000; /* Example button text color */
+  background-color: #ffffff;
+  color: #0004ff;
   text-decoration: none;
-  border-radius: 5px;
+  border: 2px solid #0004ff;
+  border-radius: 9999px; /* Pill shape */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.full-width-banner .button a:hover,
+.full-width-banner .button button:hover {
+  background-color: #0004ff;
+  color: #ffffff;
 }
